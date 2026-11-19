@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>和悦酒店 · 管理后台</title>
+<link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+
+<!-- ========== 登录页 ========== -->
+<div id="loginPage" class="login-page">
+  <div class="login-bg"></div>
+  <div class="login-box">
+    <div class="login-brand">
+      <div class="lb-logo">H.O</div>
+      <h1>和悦酒店</h1>
+      <p>HOTEL ADMINISTRATION</p>
+    </div>
+    <h2>管理后台登录</h2>
+    <form id="loginForm">
+      <label>账号</label>
+      <input id="lgUser" type="text" placeholder="请输入员工账号" autocomplete="username" required>
+      <label>密码</label>
+      <input id="lgPass" type="password" placeholder="请输入密码" autocomplete="current-password" required>
+      <div id="loginMsg" class="form-msg"></div>
+      <button type="submit" class="btn-primary">登 录</button>
+    </form>
+    <div class="login-tip">测试账号：管理员 <b>freee / 123456</b> · 操作员 <b>www / 123456</b></div>
+    <a href="../index.html" class="back-site">← 返回酒店官网</a>
+  </div>
+</div>
+
+<!-- ========== 主界面 ========== -->
+<div id="app" class="app hidden">
+  <!-- 侧边栏 -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sb-brand">
+      <div class="sb-logo">H.O</div>
+      <div><b>和悦酒店</b><small>管理后台</small></div>
+    </div>
+    <nav class="sb-nav" id="sbNav">
+      <div class="nav-group">概览</div>
+      <a href="#" data-view="dashboard" class="active"><i>◈</i>控制面板</a>
+      <div class="nav-group">业务管理</div>
+      <a href="#" data-view="order"><i>▤</i>订单管理</a>
+      <a href="#" data-view="checkin"><i>◇</i>入住管理</a>
+      <a href="#" data-view="room"><i>▦</i>客房管理</a>
+      <a href="#" data-view="roomtype"><i>▥</i>房型管理</a>
+      <a href="#" data-view="ordertype"><i>◫</i>预订方式</a>
+      <div class="nav-group">系统管理</div>
+      <a href="#" data-view="user"><i>☺</i>客户管理</a>
+      <a href="#" data-view="operator" data-admin="1"><i>♙</i>员工管理</a>
+      <a href="#" data-view="hotel" data-admin="1"><i>⚙</i>酒店设置</a>
+    </nav>
+    <div class="sb-foot">
+      <div class="sb-user"><span id="sbRole" class="role-tag">—</span><b id="sbName">管理员</b></div>
+      <a href="#" id="logoutBtn">退出登录</a>
+    </div>
+  </aside>
+
+  <!-- 主内容 -->
+  <main class="main">
+    <header class="topbar">
+      <button class="menu-btn" id="menuBtn">☰</button>
+      <div class="crumb"><span>和悦酒店</span> / <b id="viewTitle">控制面板</b></div>
+      <div class="top-right"><span id="todayText"></span></div>
+    </header>
+    <div class="content" id="content"><!-- 动态渲染 --></div>
+  </main>
+</div>
+
+<!-- ========== 通用弹窗 ========== -->
+<div id="modal" class="modal">
+  <div class="modal-mask"></div>
+  <div class="modal-box">
+    <div class="modal-head"><h3 id="modalTitle">编辑</h3><button class="modal-close">×</button></div>
+    <div class="modal-body" id="modalBody"></div>
+    <div class="modal-foot"><button class="btn-ghost" id="modalCancel">取消</button><button class="btn-primary" id="modalSave">保存</button></div>
+  </div>
+</div>
+
+<div id="toast" class="toast"></div>
+
+<script src="js/admin-api.js"></script>
+<script src="js/admin-app.js"></script>
+</body>
+</html>

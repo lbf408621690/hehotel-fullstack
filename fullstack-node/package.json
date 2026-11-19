@@ -1,0 +1,14 @@
+{
+  "name": "hehotel-fullstack",
+  "version": "1.0.0",
+  "description": "和悦酒店官网 + 管理后台（全栈版 Express + SQLite）",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2",
+    "express-session": "^1.18.1",
+    "sql.js": "^1.13.0"
+  }
+}

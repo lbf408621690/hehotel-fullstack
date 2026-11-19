@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>H.O 和悦酒店 · 让每一次停留成为城市记忆</title>
+<meta name="description" content="H.O 和悦酒店，一座城市里的温柔居所。臻选客房、饕餮美食与贴心服务，期待您的莅临。">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ============ 顶部导航 ============ -->
+<header class="site-header" id="siteHeader">
+  <div class="hd-inner">
+    <a href="#top" class="brand" aria-label="返回首页">
+      <span class="brand-mark">H<span>.</span>O</span>
+      <span class="brand-text"><b>和悦酒店</b><i>GRAND HOTEL</i></span>
+    </a>
+    <nav class="main-nav" id="mainNav">
+      <a href="#top" class="active">首页</a>
+      <a href="#rooms">客房</a>
+      <a href="#dining">餐饮</a>
+      <a href="#facility">设施</a>
+      <a href="#about">关于</a>
+      <a href="#contact">联系</a>
+      <a href="#" class="nav-staff" id="staffLoginBtnM">员工登录 →</a>
+    </nav>
+    <div class="hd-actions">
+      <button class="icon-btn" id="searchToggle" aria-label="搜索">⌕</button>
+      <div class="user-area" id="userArea">
+        <button class="link-btn" id="loginBtn">登录</button>
+        <span class="sep">/</span>
+        <button class="link-btn" id="registerBtn">注册</button>
+        <span class="sep sep-staff">|</span>
+        <button class="link-btn staff-entry" id="staffLoginBtn" title="酒店管理后台入口">员工登录</button>
+      </div>
+      <a href="#booking" class="book-btn">立即预订 <span>→</span></a>
+      <button class="menu-btn" id="menuBtn" aria-label="菜单"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<!-- ============ 首屏 ============ -->
+<section class="hero" id="top">
+  <div class="hero-bg" style="background-image:url('images/hero-hotel.jpg')"></div>
+  <div class="hero-mask"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">WELCOME TO H.O GRAND HOTEL</p>
+    <h1 class="hero-title">让每一次停留<br>都成为城市的<span>温柔记忆</span></h1>
+    <p class="hero-sub">Where every stay becomes a gentle memory of the city</p>
+    <div class="hero-btns">
+      <a href="#rooms" class="btn btn-outline">探索客房</a>
+      <a href="#about" class="btn btn-text">了解我们 <span>↗</span></a>
+    </div>
+  </div>
+  <a href="#about" class="scroll-down"><span>SCROLL DOWN</span><i></i></a>
+  <div class="hero-side">EST. 1997 &nbsp;·&nbsp; HANGZHOU</div>
+</section>
+
+<!-- ============ 预订搜索条 ============ -->
+<section class="booking-bar" id="booking">
+  <div class="bb-inner">
+    <div class="bb-field">
+      <label>入住日期 / CHECK IN</label>
+      <input type="date" id="checkIn">
+    </div>
+    <div class="bb-field">
+      <label>离店日期 / CHECK OUT</label>
+      <input type="date" id="checkOut">
+    </div>
+    <div class="bb-field">
+      <label>房型 / ROOM TYPE</label>
+      <select id="roomFilter">
+        <option value="all">全部房型</option>
+      </select>
+    </div>
+    <div class="bb-field">
+      <label>入住人数 / GUESTS</label>
+      <select id="guests">
+        <option value="1">1 位</option>
+        <option value="2" selected>2 位</option>
+        <option value="3">3 位</option>
+        <option value="4">4 位</option>
+      </select>
+    </div>
+    <button class="bb-submit" id="searchRooms">查询空房 <span>→</span></button>
+  </div>
+</section>
+
+<!-- ============ 关于我们 ============ -->
+<section class="about section" id="about">
+  <div class="container about-grid">
+    <div class="about-img reveal">
+      <div class="img-frame"><img src="images/about2.jpg" alt="酒店空间"></div>
+      <div class="img-badge"><b>20<sup>+</sup></b><span>年匠心沉淀</span></div>
+    </div>
+    <div class="about-txt reveal">
+      <p class="sec-eyebrow"><span class="line"></span> ABOUT US · 关于我们</p>
+      <h2 class="sec-title">城市之中<br>喧嚣之外</h2>
+      <p class="sec-en">A sanctuary in the heart of the city</p>
+      <p class="para">H.O 和悦酒店坐落于城市中心，以东方美学为魂，将温润的木质肌理与现代设计语言相融。我们相信，好的空间不止于入住，更是一种从容的生活态度。</p>
+      <p class="para">从臻选客房到味蕾盛宴，从会议宴会到身心养护，我们以细致入微的服务，款待每一位远道而来的客人。</p>
+      <div class="about-stats">
+        <div><b id="statRooms">—</b><span>精品客房</span></div>
+        <div><b>5<em>★</em></b><span>星级服务</span></div>
+        <div><b>24<em>h</em></b><span>贴心管家</span></div>
+      </div>
+      <a href="#contact" class="btn btn-dark">联系我们</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 客房展示 ============ -->
+<section class="rooms section" id="rooms">
+  <div class="container">
+    <div class="sec-head reveal">
+      <p class="sec-eyebrow center"><span class="line"></span> ROOMS & SUITES <span class="line"></span></p>
+      <h2 class="sec-title center">客房与套房</h2>
+      <p class="sec-en center">Rest in understated elegance</p>
+    </div>
+    <div class="room-tabs" id="roomTabs"></div>
+    <div class="room-grid" id="roomGrid">
+      <div class="loading">正在为您呈现房型…</div>
+    </div>
+    <div class="rooms-foot">
+      <p>所有房型均含双人早餐 · 免费 Wi-Fi · 延迟退房礼遇</p>
+      <a href="#booking" class="btn btn-outline">查看空房与预订</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 餐饮 ============ -->
+<section class="dining section" id="dining">
+  <div class="dining-row">
+    <div class="dining-img reveal"><img src="images/dining.jpg" alt="中餐厅"></div>
+    <div class="dining-txt reveal">
+      <p class="sec-eyebrow"><span class="line"></span> DINING · 餐饮</p>
+      <h2 class="sec-title">一味之间<br>见真章</h2>
+      <p class="sec-en">A feast for the senses</p>
+      <p class="para">和悦轩中餐厅以地道杭帮菜为本，甄选时令食材，于方寸餐盘之间呈现江南风雅。无论是商务宴请还是家人小聚，皆是理想之选。</p>
+      <div class="dining-meta"><span>和悦轩中餐厅</span><span>07:00 – 22:00</span></div>
+    </div>
+  </div>
+  <div class="dining-row reverse">
+    <div class="dining-img reveal"><img src="images/dining2.jpg" alt="西餐厅"></div>
+    <div class="dining-txt reveal">
+      <p class="sec-eyebrow"><span class="line"></span> CAFÉ & BAR · 咖啡吧</p>
+      <h2 class="sec-title">晨光与暮色<br>皆有滋味</h2>
+      <p class="sec-en">From sunrise to sunset</p>
+      <p class="para">临窗而坐，一杯现磨咖啡配精致茶点，让时光慢下来。夜幕降临，这里又化作微醺的酒廊，伴您度过惬意夜晚。</p>
+      <div class="dining-meta"><span>云顶咖啡吧</span><span>06:30 – 23:30</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 设施服务 ============ -->
+<section class="facility section" id="facility">
+  <div class="container">
+    <div class="sec-head reveal">
+      <p class="sec-eyebrow center"><span class="line"></span> FACILITIES <span class="line"></span></p>
+      <h2 class="sec-title center">设施与服务</h2>
+      <p class="sec-en center">Thoughtful touches, everywhere</p>
+    </div>
+    <div class="facility-grid">
+      <a class="fac-card reveal" href="#booking">
+        <img src="images/facility-pool.jpg" alt="室内泳池">
+        <div class="fc-mask"></div>
+        <div class="fc-txt"><b>室内恒温泳池</b><span>INDOOR POOL</span></div>
+      </a>
+      <a class="fac-card reveal" href="#booking">
+        <img src="images/facility-gym.jpg" alt="健身中心">
+        <div class="fc-mask"></div>
+        <div class="fc-txt"><b>24H 健身中心</b><span>FITNESS</span></div>
+      </a>
+      <a class="fac-card reveal" href="#booking">
+        <img src="images/facility-meeting.jpg" alt="会议宴会">
+        <div class="fc-mask"></div>
+        <div class="fc-txt"><b>会议与宴会</b><span>MEETING</span></div>
+      </a>
+      <a class="fac-card reveal" href="#booking">
+        <img src="images/facility-spa.jpg" alt="水疗SPA">
+        <div class="fc-mask"></div>
+        <div class="fc-txt"><b>水疗与养护</b><span>SPA</span></div>
+      </a>
+    </div>
+    <div class="service-strip">
+      <div><span class="serv-ic">✈</span><b>机场接送</b><i>Airport transfer</i></div>
+      <div><span class="serv-ic">◈</span><b>行政酒廊</b><i>Executive lounge</i></div>
+      <div><span class="serv-ic">◎</span><b>行李寄存</b><i>Luggage storage</i></div>
+      <div><span class="serv-ic">♢</span><b>客房送餐</b><i>Room service</i></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 新闻 ============ -->
+<section class="news section" id="news">
+  <div class="container">
+    <div class="sec-head reveal">
+      <p class="sec-eyebrow center"><span class="line"></span> JOURNAL <span class="line"></span></p>
+      <h2 class="sec-title center">酒店动态</h2>
+      <p class="sec-en center">Stories from H.O</p>
+    </div>
+    <div class="news-grid">
+      <a class="news-card reveal" href="#contact">
+        <div class="nc-img"><img src="images/news1.jpg" alt="新闻"></div>
+        <div class="nc-body"><span class="nc-date">2026 · 11</span><h3>和悦酒店荣膺年度臻选设计酒店</h3><p>以东方美学空间设计，获业界广泛关注与认可…</p><span class="nc-more">阅读更多 →</span></div>
+      </a>
+      <a class="news-card reveal" href="#contact">
+        <div class="nc-img"><img src="images/news2.jpg" alt="新闻"></div>
+        <div class="nc-body"><span class="nc-date">2026 · 10</span><h3>秋日限定 · 江南时令美馔上新</h3><p>和悦轩中餐厅推出秋季菜单，邀您品鉴时令之味…</p><span class="nc-more">阅读更多 →</span></div>
+      </a>
+      <a class="news-card reveal" href="#contact">
+        <div class="nc-img"><img src="images/about.jpg" alt="新闻"></div>
+        <div class="nc-body"><span class="nc-date">2026 · 09</span><h3>焕新启幕 · 客房升级礼遇</h3><p>部分客房完成焕新升级，以全新面貌恭候您的到来…</p><span class="nc-more">阅读更多 →</span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 预订横幅 ============ -->
+<section class="cta-band">
+  <div class="cta-bg" style="background-image:url('images/room-view.jpg')"></div>
+  <div class="cta-mask"></div>
+  <div class="cta-inner reveal">
+    <p class="sec-eyebrow center">YOUR STAY AWAITS</p>
+    <h2>一段美好的旅程，从这里开始</h2>
+    <p class="cta-en">Book your stay with us today</p>
+    <a href="#booking" class="btn btn-light">立即预订 <span>→</span></a>
+  </div>
+</section>
+
+<!-- ============ 联系 / 页脚 ============ -->
+<footer class="site-footer" id="contact">
+  <div class="container foot-grid">
+    <div class="foot-brand">
+      <div class="brand"><span class="brand-mark">H<span>.</span>O</span></div>
+      <p>让每一次停留，<br>都成为城市的温柔记忆。</p>
+      <div class="foot-social"><a href="#top">微</a><a href="#top">博</a><a href="#top">in</a></div>
+    </div>
+    <div class="foot-col">
+      <h4>探索</h4>
+      <a href="#rooms">客房与套房</a><a href="#dining">餐饮美食</a><a href="#facility">设施服务</a><a href="#news">酒店动态</a>
+    </div>
+    <div class="foot-col">
+      <h4>关于</h4>
+      <a href="#about">酒店介绍</a><a href="#contact">联系我们</a><a href="#contact">加入我们</a><a href="#contact">意见反馈</a>
+    </div>
+    <div class="foot-col foot-contact">
+      <h4>联系我们</h4>
+      <p><span>地址</span><b id="ftAddress">浙江省杭州市</b></p>
+      <p><span>电话</span><b id="ftPhone">—</b></p>
+      <p><span>邮箱</span><b id="ftEmail">—</b></p>
+      <p><span>网站</span><b id="ftWebsite">—</b></p>
+    </div>
+  </div>
+  <div class="foot-bottom"><span>© 2026 H.O Grand Hotel. All rights reserved.</span><span>和悦酒店 · 用心款待每一位客人</span></div>
+</footer>
+
+<!-- ============ 悬浮按钮 ============ -->
+<div class="float-tools">
+  <button class="float-btn consult" id="consultBtn"><span class="f-ic">☏</span><span class="f-tx">在线<br>咨询</span></button>
+  <button class="float-btn top" id="backTop"><span class="f-ic">↑</span><span class="f-tx">顶部</span></button>
+</div>
+
+<!-- ============ 登录模态框 ============ -->
+<div class="modal" id="loginModal">
+  <div class="modal-mask"></div>
+  <div class="modal-box">
+    <button class="modal-close" data-close>×</button>
+    <div class="modal-head"><p>WELCOME BACK</p><h3>登录账户</h3><span>欢迎回来，请登录以继续预订</span></div>
+    <form id="loginForm" class="modal-form">
+      <label>用户名</label><input name="username" id="lgUser" placeholder="请输入用户名" autocomplete="username" required>
+      <label>密码</label><input name="password" id="lgPass" type="password" placeholder="请输入密码" autocomplete="current-password" required>
+      <div class="form-msg" id="loginMsg"></div>
+      <button type="submit" class="btn btn-dark block">登 录</button>
+    </form>
+    <div class="modal-foot">还没有账户？<button class="link-btn" id="toRegister">立即注册</button></div>
+    <div class="modal-foot" style="justify-content:center;border-top:1px solid var(--line);margin-top:10px;padding-top:12px">员工入口 <button class="link-btn" id="toAdminLogin">员工登录 →</button></div>
+  </div>
+</div>
+
+<!-- ============ 员工登录模态框 ============ -->
+<div class="modal" id="staffLoginModal">
+  <div class="modal-mask"></div>
+  <div class="modal-box">
+    <button class="modal-close" data-close>×</button>
+    <div class="modal-head"><p>STAFF PORTAL</p><h3>员工登录</h3><span>酒店管理后台，仅限内部员工登录</span></div>
+    <form id="staffLoginForm" class="modal-form">
+      <label>员工账号</label><input name="username" id="staffUser" placeholder="请输入员工账号" autocomplete="username" required>
+      <label>密码</label><input name="password" id="staffPass" type="password" placeholder="请输入密码" autocomplete="current-password" required>
+      <div class="form-msg" id="staffLoginMsg"></div>
+      <button type="submit" class="btn btn-dark block">进入管理后台 →</button>
+    </form>
+    <div class="modal-foot" style="justify-content:center;border-top:1px solid var(--line);margin-top:10px;padding-top:12px;line-height:1.9">
+      测试账号：管理员 <b>freee / 123456</b> · 操作员 <b>www / 123456</b><br>
+      <button class="link-btn" id="staffBackSite" style="margin-top:6px">← 返回官网浏览</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ 注册模态框 ============ -->
+<div class="modal" id="registerModal">
+  <div class="modal-mask"></div>
+  <div class="modal-box wide">
+    <button class="modal-close" data-close>×</button>
+    <div class="modal-head"><p>JOIN US</p><h3>注册会员</h3><span>注册即享专属礼遇与便捷预订</span></div>
+    <form id="registerForm" class="modal-form grid-form">
+      <div class="f-item"><label>用户名 *</label><input name="username" placeholder="用于登录" required></div>
+      <div class="f-item"><label>密码 *</label><input name="password" type="password" placeholder="登录密码" required></div>
+      <div class="f-item"><label>姓名 *</label><input name="name" placeholder="您的姓名" required></div>
+      <div class="f-item"><label>性别</label><select name="gender"><option value="男">男</option><option value="女">女</option></select></div>
+      <div class="f-item"><label>手机 *</label><input name="phone" placeholder="手机号码" required></div>
+      <div class="f-item"><label>邮箱</label><input name="email" placeholder="电子邮箱"></div>
+      <div class="f-item full"><label>地址</label><input name="address" placeholder="联系地址"></div>
+      <div class="f-item full"><label>身份证号</label><input name="idcard" placeholder="身份证号码（选填）"></div>
+      <div class="form-msg full" id="registerMsg"></div>
+      <button type="submit" class="btn btn-dark block full">注 册</button>
+    </form>
+    <div class="modal-foot">已有账户？<button class="link-btn" id="toLogin">立即登录</button></div>
+  </div>
+</div>
+
+<!-- ============ 预订模态框 ============ -->
+<div class="modal" id="bookModal">
+  <div class="modal-mask"></div>
+  <div class="modal-box wide">
+    <button class="modal-close" data-close>×</button>
+    <div class="modal-head"><p>RESERVATION</p><h3>客房预订</h3><span id="bookRoomName">请确认您的入住信息</span></div>
+    <form id="bookForm" class="modal-form grid-form">
+      <div class="f-item"><label>入住人 *</label><input name="name" id="bkName" placeholder="入住人姓名" required></div>
+      <div class="f-item"><label>联系电话 *</label><input name="phone" id="bkPhone" placeholder="手机号码" required></div>
+      <div class="f-item"><label>入住日期 *</label><input name="orderDate" id="bkDate" type="date" required></div>
+      <div class="f-item"><label>入住天数 *</label><input name="orderDays" id="bkDays" type="number" min="1" value="1" required></div>
+      <div class="f-item full"><label>房型</label><input name="roomType" id="bkRoomType" readonly></div>
+      <div class="f-item full price-row"><span>预估费用</span><b id="bkCost">¥ 0</b><small id="bkTip">提交后生成订单，可在"我的订单"中支付</small></div>
+      <div class="form-msg full" id="bookMsg"></div>
+      <button type="submit" class="btn btn-dark block full">确认预订</button>
+    </form>
+  </div>
+</div>
+
+<!-- ============ 我的订单模态框 ============ -->
+<div class="modal" id="ordersModal">
+  <div class="modal-mask"></div>
+  <div class="modal-box wide">
+    <button class="modal-close" data-close>×</button>
+    <div class="modal-head"><p>MY ORDERS</p><h3>我的订单</h3><span>查看与管理您的预订</span></div>
+    <div class="orders-list" id="ordersList"><div class="loading">加载中…</div></div>
+  </div>
+</div>
+
+<!-- ============ 个人中心模态框 ============ -->
+<div class="modal" id="profileModal">
+  <div class="modal-mask"></div>
+  <div class="modal-box">
+    <button class="modal-close" data-close>×</button>
+    <div class="modal-head"><p>MY PROFILE</p><h3>个人中心</h3><span id="profileName"></span></div>
+    <div class="profile-body" id="profileBody"><div class="loading">加载中…</div></div>
+    <button class="btn btn-outline block" id="logoutBtn">退出登录</button>
+  </div>
+</div>
+
+<!-- ============ 提示 ============ -->
+<div class="toast" id="toast"></div>
+
+<script src="js/api.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>H.O 大酒店 · 接口演示台（同源版）</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, "Microsoft YaHei", sans-serif; background: #f5f6f8; color: #1f2329; line-height: 1.6; }
+  .top { background: linear-gradient(135deg, #1e3a5f, #2c5282); color: #fff; padding: 22px 32px; }
+  .top h1 { font-size: 22px; font-weight: 600; }
+  .top p { font-size: 13px; opacity: .85; margin-top: 4px; }
+  .wrap { max-width: 1080px; margin: 24px auto; padding: 0 20px; }
+  .card { background: #fff; border-radius: 12px; padding: 20px 24px; margin-bottom: 18px; box-shadow: 0 1px 4px rgba(0,0,0,.06); }
+  .card h2 { font-size: 16px; margin-bottom: 14px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .tag { font-size: 11px; background: #e8f0fe; color: #2c5282; padding: 2px 8px; border-radius: 10px; font-weight: 500; }
+  .tag.login { background:#fff3cd; color:#856404; }
+  .btn { border: none; background: #2c5282; color: #fff; padding: 8px 16px; border-radius: 6px; cursor: pointer; font-size: 13px; margin: 0 8px 8px 0; }
+  .btn:hover { background: #1e3a5f; }
+  .btn.ghost { background: #e8f0fe; color: #2c5282; }
+  .btn.ghost:hover { background: #d6e4fb; }
+  .result { background: #1e1e1e; color: #d4d4d4; border-radius: 8px; padding: 14px 16px; font-family: Consolas, monospace; font-size: 12px; margin-top: 12px; white-space: pre-wrap; word-break: break-all; max-height: 260px; overflow: auto; }
+  .result:empty { display: none; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 14px; margin-top: 8px; }
+  .room { border: 1px solid #e5e8ec; border-radius: 10px; padding: 14px 16px; position: relative; }
+  .room .name { font-size: 15px; font-weight: 600; color: #1e3a5f; }
+  .room .price { color: #c0392b; font-size: 18px; font-weight: 600; margin: 6px 0; }
+  .room .meta { font-size: 12px; color: #6b7280; }
+  .room .rest { position: absolute; top: 12px; right: 12px; font-size: 11px; padding: 2px 8px; border-radius: 10px; }
+  .rest.has { background: #e6f7ed; color: #1a7f4b; }
+  .rest.none { background: #fdeaea; color: #b91c1c; }
+  .hotel-info { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 10px 24px; font-size: 13px; }
+  .hotel-info b { color: #6b7280; font-weight: 400; display: inline-block; width: 60px; }
+  .row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+  input { border: 1px solid #d1d5db; border-radius: 6px; padding: 7px 10px; font-size: 13px; width: 150px; }
+  .status { font-size: 12px; padding: 4px 10px; border-radius: 10px; display: inline-block; }
+  .status.ok { background: #e6f7ed; color: #1a7f4b; }
+  .status.no { background: #fdeaea; color: #b91c1c; }
+  .hint { font-size: 12px; color: #9ca3af; margin-top: 10px; }
+  .notice { background:#fff9e6; border:1px solid #ffe08a; color:#7a5b00; padding:10px 14px; border-radius:8px; font-size:13px; margin-bottom:18px; }
+</style>
+</head>
+<body>
+<div class="top">
+  <h1>🏨 H.O 大酒店 · 接口演示台</h1>
+  <p>同源版 · 页面与接口同为 http://localhost:8080/ho-api · 登录 Cookie 自动携带</p>
+</div>
+<div class="wrap">
+  <div class="notice">✅ 如果你是从这个地址（地址栏含 <b>localhost:8080</b>）打开的，登录态就能正常保持。若用本地文件方式打开，登录后的接口会因浏览器跨站 Cookie 策略而失败。</div>
+
+  <div class="card">
+    <h2>① 酒店信息 <span class="tag">GET /hotel</span></h2>
+    <button class="btn" onclick="loadHotel()">查询酒店信息</button>
+    <div class="hotel-info" id="hotelBox"></div>
+    <div class="result" id="hotelResult"></div>
+  </div>
+
+  <div class="card">
+    <h2>② 房型列表 <span class="tag">GET /hotel/room</span> <span class="tag login">需登录</span></h2>
+    <div class="row">
+      <button class="btn" onclick="loadRooms()">全部房型</button>
+      <button class="btn ghost" onclick="loadRestRooms()">仅有余量</button>
+    </div>
+    <div class="grid" id="roomBox"></div>
+    <div class="result" id="roomResult"></div>
+  </div>
+
+  <div class="card">
+    <h2>③ 用户登录 <span class="tag">POST /login/user</span></h2>
+    <div class="row">
+      <input id="loginUser" value="user0" placeholder="用户名">
+      <input id="loginPass" value="pass0" placeholder="密码">
+      <button class="btn" onclick="doLogin()">登录</button>
+      <span id="loginStatus" class="status no">未登录</span>
+    </div>
+    <div class="result" id="loginResult"></div>
+    <div class="hint">测试账号 user0 / pass0。先登录，再做第②④⑤步。</div>
+  </div>
+
+  <div class="card">
+    <h2>④ 我的订单 <span class="tag">GET /user/order?userId=12</span> <span class="tag login">需登录</span></h2>
+    <button class="btn" onclick="loadOrders()">查询我的订单</button>
+    <div class="result" id="orderResult"></div>
+  </div>
+
+  <div class="card">
+    <h2>⑤ 预订房间 <span class="tag">GET /user/order/add</span> <span class="tag login">需登录</span></h2>
+    <div class="row">
+      <input id="roomTypeId" value="2" placeholder="房型ID">
+      <input id="orderDays" value="2" placeholder="入住天数">
+    </div>
+    <div class="hint" style="margin:6px 0 10px">房型ID 2=单人房 3=双床房 4=豪华大床房 5=大床房</div>
+    <button class="btn" onclick="addOrder()">提交预订</button>
+    <div class="result" id="addResult"></div>
+  </div>
+</div>
+<script>
+// 同源：页面本身在 http://localhost:8080/ho-api/demo.html，接口也在 /ho-api 下
+const BASE = '/ho-api';
+function show(id, text) {
+  document.getElementById(id).textContent = typeof text === 'string' ? text : JSON.stringify(text, null, 2);
+}
+async function api(path, options = {}) {
+  const res = await fetch(BASE + path, { credentials: 'same-origin', ...options });
+  return await res.json();
+}
+function checkLogin(resp, targetId) {
+  if (resp && resp.code === 1100) {
+    show(targetId, resp);
+    alert('未登录或登录已失效：请先完成第③步登录');
+    return false;
+  }
+  return true;
+}
+
+async function loadHotel() {
+  try {
+    const r = await api('/hotel');
+    show('hotelResult', r);
+    if (r.code === 1000 && r.data && r.data[0]) {
+      const h = r.data[0];
+      document.getElementById('hotelBox').innerHTML =
+        '<div><b>酒店名</b>'+h.hotelName+'</div>'+
+        '<div><b>电话</b>'+h.phone+'</div>'+
+        '<div><b>座机</b>'+h.telephone+'</div>'+
+        '<div><b>邮箱</b>'+h.email+'</div>'+
+        '<div><b>地址</b>'+h.address+'</div>'+
+        '<div><b>网站</b>'+h.website+'</div>';
+    }
+  } catch (e) { show('hotelResult', '请求失败：' + e + '\n请确认后端服务正在运行'); }
+}
+
+async function loadRooms() {
+  try {
+    const r = await api('/hotel/room');
+    if (!checkLogin(r, 'roomResult')) return;
+    show('roomResult', r);
+    renderRooms(r.data || []);
+  } catch (e) { show('roomResult', '请求失败：' + e); }
+}
+async function loadRestRooms() {
+  try {
+    const r = await api('/hotel/room/rest');
+    if (!checkLogin(r, 'roomResult')) return;
+    show('roomResult', r);
+    renderRooms(r.data || []);
+  } catch (e) { show('roomResult', '请求失败：' + e); }
+}
+function renderRooms(list) {
+  const box = document.getElementById('roomBox');
+  if (!list.length) { box.innerHTML = '<p class="hint">暂无数据</p>'; return; }
+  box.innerHTML = list.map(x =>
+    '<div class="room"><div class="rest '+(x.rest>0?'has':'none')+'">'+(x.rest>0?'有余量':'已满')+'</div>'+
+    '<div class="name">'+x.roomType+'</div>'+
+    '<div class="price">¥'+x.price+'</div>'+
+    '<div class="meta">面积 '+x.area+'㎡ · '+x.bedNum+' 张床 · '+x.bedSize+'</div>'+
+    '<div class="meta">'+x.remark+'</div></div>'
+  ).join('');
+}
+
+async function doLogin() {
+  try {
+    const u = document.getElementById('loginUser').value;
+    const p = document.getElementById('loginPass').value;
+    const body = 'username=' + encodeURIComponent(u) + '&password=' + encodeURIComponent(p);
+    const r = await api('/login/user', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: body
+    });
+    show('loginResult', r);
+    if (r.code === 1000) {
+      const s = document.getElementById('loginStatus');
+      s.textContent = '已登录 ✓ (userId=' + r.data.userId + ')';
+      s.className = 'status ok';
+    } else {
+      const s = document.getElementById('loginStatus');
+      s.textContent = '登录失败'; s.className = 'status no';
+    }
+  } catch (e) { show('loginResult', '请求失败：' + e); }
+}
+
+async function loadOrders() {
+  try {
+    const r = await api('/user/order?userId=12');
+    if (!checkLogin(r, 'orderResult')) return;
+    show('orderResult', r);
+  } catch (e) { show('orderResult', '请求失败：' + e); }
+}
+
+async function addOrder() {
+  try {
+    const typeId = document.getElementById('roomTypeId').value;
+    const days = document.getElementById('orderDays').value;
+    const today = new Date().toISOString().slice(0,10);
+    const params = new URLSearchParams({
+      orderTypeId: '5', orderType: '前台预订', userId: '12',
+      name: '测试客人', phone: '13800000000',
+      roomTypeId: typeId, roomType: '单人房',
+      orderDate: today, orderDays: days, orderCost: String(Number(days)*109.8)
+    });
+    const r = await api('/user/order/add?' + params.toString());
+    if (!checkLogin(r, 'addResult')) return;
+    show('addResult', r);
+    if (r.code === 1000) alert('预订成功！点上面"查询我的订单"看看');
+  } catch (e) { show('addResult', '请求失败：' + e); }
+}
+</script>
+</body>
+</html>
