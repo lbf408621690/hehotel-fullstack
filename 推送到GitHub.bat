@@ -6,11 +6,11 @@ echo ============================================================
 echo.
 echo 使用说明：
 echo   1. 先在 GitHub 网页上新建一个空仓库（不要勾选 README/.gitignore）
-echo   2. 把下面 GITHUB_USER 和 REPO_NAME 改成你的用户名和仓库名
+echo   2. 用户名和仓库名已填好，如需改名请修改下面两行
 echo   3. 双击本文件运行；首次会弹出 GitHub 登录窗口，登录后自动推送
 echo.
 
-set "GITHUB_USER=FreeeBird"
+set "GITHUB_USER=lbf408621690"
 set "REPO_NAME=hehotel-fullstack"
 
 echo 目标仓库：https://github.com/%GITHUB_USER%/%REPO_NAME%
